@@ -22,7 +22,7 @@ fn_in = 'test_data/PHA0026.csv'
 #                 fn_in, str(min_cluster_size), str(ndim)])
 # APP variant 1.B (parallel, with custom workers count):
 subprocess.run(["python", "APP/variation_parallel_from_cmd_fixed_param.py",
-                fn_in, str(min_cluster_size), str(ndim), str(workers_count)])
+                fn_in, str(min_cluster_size), str(ndim), 'workers_count={0}'.format(workers_count)])
 # APP variant 2 (consistent):
 # subprocess.run(["python", "APP/variation_from_cmd_fixed_param.py",
 #                 fn_in, str(min_cluster_size), str(ndim)])
