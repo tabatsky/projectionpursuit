@@ -5,6 +5,7 @@ from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import cm
 from skimage.filters import gaussian
 import csv
 from operator import attrgetter
@@ -22,16 +23,35 @@ fn_out_txt = 'split_projections.txt'
 fn_out_stats = 'results/run_stats_' + fn_in + '.txt'
 
 min_cluster_size = int(sys.argv[2])
+ndim = int(sys.argv[3])
+
 # h = .01
 # sigma = 3
 sigma = 5
 dq = 0.02
 # q2 = 0.1
 betta = 0.1
-ndim = int(sys.argv[3])
 max_dj = 5
-draw_all = False
 
+for i in range(0, len(sys.argv)):
+    arg = sys.argv[i]
+    if arg.startswith('sigma='):
+        sigma = int(arg.replace('sigma=', ''))
+        print(arg)
+    elif arg.startswith('dq='):
+        dq = float(arg.replace('dq=', ''))
+        print(arg)
+    elif arg.startswith('betta='):
+        betta = float(arg.replace('betta=', ''))
+        print(arg)
+    elif arg.startswith('max_dj='):
+        max_dj = int(arg.replace('max_dj=', ''))
+        print(arg)
+    elif arg.startswith('workers_count='):
+        MAX_WORKERS = int(arg.replace('workers_count=', ''))
+        print(arg)
+
+draw_all = False
 draw_split_point_size = 3.0
 
 cluster_results = []
@@ -39,7 +59,7 @@ iteration_paramList = []
 
 result_projections = []
 
-spectral = plt.get_cmap('Spectral', 2)
+spectral = cm.get_cmap('Spectral', 2)
 colors = spectral(np.linspace(0, 1, 2))
 red = colors[0, :]
 blue = colors[1, :]

@@ -20,14 +20,33 @@ fn_out = 'results/results_' + Path(fn_in).stem + '.csv'
 fn_out_stats = 'results/run_stats_' + Path(fn_in).stem + '.txt'
 
 min_cluster_size = int(sys.argv[2])
+ndim = int(sys.argv[3])
+
 h = .01
 sigma = 3
 dq = 0.02
 q2 = 0.1
-ndim = int(sys.argv[3])
 max_dj = 5
-draw_all = False
 
+for i in range(0, len(sys.argv)):
+    arg = sys.argv[i]
+    if arg.startswith('h='):
+        h = float(arg.replace('h=', ''))
+        print(arg)
+    elif arg.startswith('sigma='):
+        sigma = int(arg.replace('sigma=', ''))
+        print(arg)
+    elif arg.startswith('dq='):
+        dq = float(arg.replace('dq=', ''))
+        print(arg)
+    elif arg.startswith('q2='):
+        q2 = float(arg.replace('q2=', ''))
+        print(arg)
+    elif arg.startswith('max_dj='):
+        max_dj = int(arg.replace('max_dj=', ''))
+        print(arg)
+
+draw_all = False
 cluster_results = []
 
 
