@@ -12,9 +12,16 @@ ndim=10
 
 workers_count=4
 
+h=0.01
+sigma=5
+dq=0.02
+q2=0.1
+betta=0.1
+max_dj=5
+
 fn_in='../test_data/PHA0026.csv'
 
-python variation_parallel_from_cmd_fixed_param.py $fn_in $min_cluster_size $ndim $workers_count
+python variation_parallel_from_cmd_fixed_param.py $fn_in $min_cluster_size $ndim [workers_count=$workers_count] [h=$h] [sigma=$sigma] [dq=$dq] [q2=$q2] [max_dj=$max_dj]
 
-python variation_from_cmd_dynamic_param.py $fn_in $min_cluster_size $ndim
+python variation_from_cmd_dynamic_param.py $fn_in $min_cluster_size $ndim [sigma=$sigma] [dq=$dq] [betta=$betta] [max_dj=$max_dj]
 ````
