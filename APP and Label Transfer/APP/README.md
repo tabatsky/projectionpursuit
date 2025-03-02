@@ -1,8 +1,7 @@
-There are few variants of the same script.
+There are multiple variants of the same script:
 
-If the script name contains the "_parallel" modifier, the parallel computations will be performed, otherwise consequent computations will be performed.
-
-If the script name contains the "_fixed_param" modifier, it will use fixed intrinsic parameters, on the other hand, if the script contains "_dynamic_param" modifier, it will compute parameters at the runtime.
+If the script name contains the "_parallel" modifier, parallel computations will be performed; otherwise, sequential computations will be used.
+If the script name contains the "_fixed_param" modifier, it will use fixed intrinsic parameters. Conversely, if the script name contains the "_dynamic_param" modifier, parameters will be computed at runtime.
 
 Run examples:
 
